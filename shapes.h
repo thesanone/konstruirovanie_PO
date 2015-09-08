@@ -24,7 +24,7 @@ class Shape
 	friend std::ostream & operator <<(std::ostream & output, Shape* sh);
 protected:
 	int id;
-	char type;
+	std::string type;
 	Point highLeftPoint;
 	int hight, width;
 	short int columns, lines;
@@ -37,7 +37,7 @@ public:
 	/*void setVisible(bool visible) { this->visible = visible; }
 	bool getVisible() { return visible; }*/
 	int getID() { return id; }
-	char getType() { return type; }
+	std::string getType() { return type; }
 
 	virtual void setHight(int hight){}
 	virtual void setWidth(int width){}

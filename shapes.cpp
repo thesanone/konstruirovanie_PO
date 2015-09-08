@@ -35,7 +35,7 @@ static int textInRectangleCounter = 0;
 
 Rectangle::Rectangle()
 {
-	type = 'R';
+	type = "Rectangle";
 	id = rectanglesCounter;
 	rectanglesCounter++;
 	shapesCounter++;
@@ -43,7 +43,7 @@ Rectangle::Rectangle()
 
 Rectangle::Rectangle(Point highLeftPoint)
 {	
-	type = 'R';
+	type = "Rectangle";
 	id = rectanglesCounter;
 	rectanglesCounter++;
 	shapesCounter++;
@@ -51,7 +51,7 @@ Rectangle::Rectangle(Point highLeftPoint)
 }
 Rectangle::Rectangle(Point highLeftPoint, int hight, int width)
 {
-	type = 'R';
+	type = "Rectangle";
 	id = rectanglesCounter;
 	rectanglesCounter++;
 	shapesCounter++;
@@ -80,14 +80,14 @@ void Rectangle::show()
 
 Table::Table()
 {
-	type = 'C';
+	type = "Table";
 	id = tablesCounter;
 	shapesCounter++;
 	tablesCounter++;
 }
 Table::Table(Point highLeftPoint)
 {
-	type = 'C';
+	type = "Table";
 	id = tablesCounter;
 	shapesCounter++;
 	tablesCounter++;
@@ -95,7 +95,7 @@ Table::Table(Point highLeftPoint)
 }
 Table::Table(Point highLeftPoint, int hight, int width)
 {
-	type = 'C';
+	type = "Table";
 	id = tablesCounter;
 	shapesCounter++;
 	tablesCounter++;
@@ -105,7 +105,7 @@ Table::Table(Point highLeftPoint, int hight, int width)
 }
 Table::Table(Point highLeftPoint, int hight, int width, short int columns, short int lines)
 {
-	type = 'C';
+	type = "Table";
 	id = tablesCounter;
 	shapesCounter++;
 	tablesCounter++;
@@ -146,14 +146,14 @@ void Table::show()
 
 Text::Text()
 {
-	type = 'T';
+	type = "Text";
 	id = textCounter;
 	shapesCounter++;
 	textCounter++;
 }
 Text::Text(Point highLeftPoint)
 {
-	type = 'T';
+	type = "Text";
 	id = textCounter;
 	shapesCounter++;
 	textCounter++;
@@ -161,7 +161,7 @@ Text::Text(Point highLeftPoint)
 }
 Text::Text(Point highLeftPoint, std::string text)
 {
-	type = 'T';
+	type = "Text";
 	id = textCounter;
 	shapesCounter++;
 	textCounter++;
@@ -184,14 +184,14 @@ void Text::show()
 
 TextInRectangle::TextInRectangle()
 {
-	type = 'I';
+	type = "TextInRectangle";
 	id = textInRectangleCounter;
 	shapesCounter++;
 	textInRectangleCounter++;
 }
 TextInRectangle::TextInRectangle(Point highLeftPoint)
 {
-	type = 'I';
+	type = "TextInRectangle";
 	id = textInRectangleCounter;
 	shapesCounter++;
 	textInRectangleCounter++;
@@ -199,7 +199,7 @@ TextInRectangle::TextInRectangle(Point highLeftPoint)
 }
 TextInRectangle::TextInRectangle(Point highLeftPoint, std::string text)
 {
-	type = 'I';
+	type = "TextInRectangle";
 	id = textInRectangleCounter;
 	shapesCounter++;
 	textInRectangleCounter++;
@@ -207,7 +207,7 @@ TextInRectangle::TextInRectangle(Point highLeftPoint, std::string text)
 }
 TextInRectangle::TextInRectangle(Point highLeftPoint, int hight, int width)
 {
-	type = 'I';
+	type = "TextInRectangle";
 	id = textInRectangleCounter;
 	shapesCounter++;
 	textInRectangleCounter++;
@@ -217,7 +217,7 @@ TextInRectangle::TextInRectangle(Point highLeftPoint, int hight, int width)
 }
 TextInRectangle::TextInRectangle(Point highLeftPoint, std::string text, int hight, int width)
 {
-	type = 'I';
+	type = "TextInRectangle";
 	id = textInRectangleCounter;
 	shapesCounter++;
 	textInRectangleCounter++;

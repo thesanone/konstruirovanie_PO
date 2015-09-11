@@ -26,63 +26,80 @@ protected:
 	int id;
 	std::string type;
 	Point highLeftPoint;
-	int hight, width;
-	short int columns, lines;
-	std::string text;
-	//bool visible;
 public:
 	Shape();
 	~Shape(){}
 	void moveTo(Point p) { highLeftPoint = p; }
-	/*void setVisible(bool visible) { this->visible = visible; }
-	bool getVisible() { return visible; }*/
-	int getID() { return id; }
-	std::string getType() { return type; }
+	int getID() const { return id; }
+	std::string getType() const { return type; }
 
 	virtual void setHight(int hight){}
-	virtual void setWidth(int width){}
-	virtual void setColumns(short int columns){}
-	virtual void setLines(short int lines){}
-	virtual void setText(std::string text){}
+	virtual int getHight(){ return 0; }
 
-	virtual void show() = 0;
+	virtual void setWidth(int width){}
+	virtual int getWidth(){ return 0; }
+
+	virtual void setColumns(short int columns){}
+	virtual short int getColumns(){ return 0; }
+
+	virtual void setLines(short int lines){}
+	virtual short int getLines(){ return 0; }
+
+	virtual void setText(std::string text){}
+	virtual std::string getText(){ return "null"; }
+
+	virtual void show(std::ostream & output) = 0;
 };
 
 std::ostream & operator <<(std::ostream & output, Shape* sh);
 
 class Rectangle :public virtual Shape
 {
+protected:
+	int hight, width;
 public:
 	Rectangle();
 	Rectangle(Point highLeftPoint);
 	Rectangle(Point highLeftPoint, int hight, int width);
 	void setHight(int hight);
+	int getHight(){ return hight; }
 	void setWidth(int width);
-	void show();
+	int getWidth(){ return width; }
+	void show(std::ostream & output);
 };
 
 class Table :public Shape
 {
+private:
+	short int columns, lines;
+	int hight, width;
 public:
 	Table();
 	Table(Point highLeftPoint);
 	Table(Point highLeftPoint, int hight, int width);
 	Table(Point highLeftPoint, int hight, int width, short int columns, short int lines);
 	void setHight(int hight);
+	int getHight(){ return hight; }
 	void setWidth(int width);
+	int getWidth(){ return width; }
 	void setColumns(short int columns);
+	short int getColumns(){ return columns; }
 	void setLines(short int lines);
-	void show();
+	short int getLines(){ return lines; }
+	void show(std::ostream & output);
 };
 
 class Text :public virtual Shape
 {
+protected:
+	std::string text;
 public:
 	Text();
 	Text(Point highLeftPoint);
 	Text(Point highLeftPoint, std::string text);
 	void setText(std::string text);
-	void show();
+	std::string getText(){ return text; }
+	void show(std::ostream & output);
 };
 	
 class TextInRectangle :public Text, public Rectangle
@@ -93,7 +110,7 @@ public:
 	TextInRectangle(Point highLeftPoint, std::string text);
 	TextInRectangle(Point highLeftPoint, int hight, int width);
 	TextInRectangle(Point highLeftPoint, std::string text, int hight, int width);
-	void show();
+	void show(std::ostream & output);
 };
 
 #endif

@@ -1,7 +1,8 @@
 #include "PrioritiesList.h"
+/*
 
 template <typename T>
-Node<T>::Node(T data, int priority, Node* next)
+Node<T>::Node(T data, int priority, Node<T>* next)
 {
 	this->data = data;
 	this->priority = priority;
@@ -99,4 +100,4 @@ T* PrioritiesList<T>::pop()
 	Node<T>* temp = head->next;
 	head->next = NULL;
 	head = temp;
-}
+}*/

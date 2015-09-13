@@ -1,5 +1,7 @@
 ﻿#include "shapes.h"
+#include "PrioritiesList.h"
 #include <iostream>
+#include <list>
 
 using namespace std;
 
@@ -7,6 +9,8 @@ void main()
 {
 	/*Shape* q = new TextInRectangle(Point(5,10));
 	cout << q;*/
+
+	/*
 	Point p(5, 10);
 	p.setXY(10.2, 15.5);
 
@@ -29,7 +33,24 @@ void main()
 	cout << four
 		<< endl << "Text " + four->getID() << " move to point 17, 24";
 	four->moveTo(Point(17, 24));
-	cout << endl << four;
-		
+	cout << endl << four;*/
+	
+	PrioritiesList<int> list;
+
+	
+	list.add(111, 20);
+	list.add(333, 10);
+	list.add(444, 0);
+	list.add(222, 15);
+
+	for (PrioritiesList<int>::Iterator i = list.begin(); i != list.end(); i++)
+	{
+		cout
+			<< "\nData:		" << i->data
+			<< "\nPriority	" << i->priority << endl;
+	}
+
+	list.clear();
+
 	system("pause");
 }

@@ -1,4 +1,4 @@
-#include "shapes.h"
+п»ї#include "shapes.h"
 #include <iostream>
 
 Shape::Shape()
@@ -26,7 +26,7 @@ static int tablesCounter = 0;
 static int textCounter = 0;
 static int textInRectangleCounter = 0;
 
-// Прямоугольник
+// РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
 
 Rectangle::Rectangle()
 {
@@ -66,7 +66,7 @@ void Rectangle::show(std::ostream & output)
 		<< "\nHight:			" << hight << std::endl;
 }
 
-//Таблица
+//РўР°Р±Р»РёС†Р°
 
 Table::Table()
 {
@@ -126,7 +126,7 @@ void Table::show(std::ostream & output)
 		<< "\nLines:			" << lines << std::endl;
 }
 
-//Текст
+//РўРµРєСЃС‚
 
 Text::Text()
 {
@@ -159,7 +159,7 @@ void Text::show(std::ostream & output)
 		<< "\nText:				" << text << std::endl;
 }
 
-//текст в прямоугольнике
+//С‚РµРєСЃС‚ РІ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРµ
 
 TextInRectangle::TextInRectangle()
 {

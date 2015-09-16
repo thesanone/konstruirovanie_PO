@@ -2,14 +2,17 @@
 #include "PrioritiesList.h"
 #include <iostream>
 #include <list>
+#include <vector>
+#include <deque>
+#include <string>
+#include <queue>
+#include <stack>
+#include <map>
 
 using namespace std;
 
 void main()
 {
-	/*Shape* q = new TextInRectangle(Point(5,10));
-	cout << q;*/
-
 	Point p(5, 10);
 	p.setXY(10, 15);
 
@@ -33,23 +36,142 @@ void main()
 		<< endl << "Text " + four->getID() << " move to point 17, 24";
 	four->moveTo(Point(17, 24));
 	cout << endl << four;
-	
-	PrioritiesList<int> list;
 
-	
-	list.add(111, 20);
-	list.add(333, 10);
-	list.add(444, 0);
-	list.add(222, 15);
 
-	for (PrioritiesList<int>::Iterator i = list.begin(); i.empty(); i++)
+	/*******************************************************************/
+	/*Стандартные контейнеры stl*/
+	/*******************************************************************/
+	// контейнер vector 
+	cout << "Vector: " << endl;
+	vector<string> v;
+	for (int i = 0; i<5; i++)
+	{
+		v.push_back(string(i + 1, 'a'));
+	}
+	for (int i = 0; i<v.size(); i++)
+	{
+		cout << v[i] << endl;
+	}
+	cout << endl;
+
+
+	// контейнер list
+	cout << "List: " << endl;
+	list<string> l;
+	for (int i = 0; i<5; i++)
+	{
+		l.push_back(string(i + 1, 'a'));
+	}
+	list<string>::iterator lp;
+	while (!l.empty())
+	{
+		lp = l.begin();
+		cout << *lp << endl;
+		l.pop_front();
+	}
+	cout << endl;
+
+
+	// контейнер deque 
+	cout << "Deque: " << endl;
+	deque<string> de;
+	for (int i = 0; i<5; i++)
+	{
+		if (i % 2 == 0)
+		{
+			de.push_back(string(i + 1, 'a'));
+		}
+		else
+		{
+			de.push_front(string(i + 1, 'a'));
+		}
+	}
+	for (int i = 0; i<de.size(); i++)
+	{
+		cout << de[i] << endl;
+	}
+	cout << endl;
+
+	// контейнер stack 
+	cout << "Stack: " << endl;
+	stack<string, vector<string> > st;
+	for (int i = 0; i<5; i++)
+	{
+		st.push(string(i + 1, 'a'));
+	}
+
+	while (!st.empty())
+	{
+		cout << st.top() << endl;
+		st.pop();
+	}
+	cout << endl;
+
+
+	// контейнер queue
+	cout << "Queue: " << endl;
+	queue<string, list<string> > qu;
+	for (int i = 0; i<5; i++)
+	{
+		qu.push(string(i + 1, 'a'));
+	}
+	while (!qu.empty())
+	{
+		cout << qu.front() << endl;
+		qu.pop();
+	}
+	cout << endl;
+
+	//контейнер map
+	cout << "Map: " << endl;
+	map<int, string> m;
+	for (int i = 0; i<10; i++)
+	{
+		m.insert(pair<int, string>(i, string(i + 1, 'a')));
+
+	}
+	map<int, string>::iterator mit;
+	for (int i = 0; i<m.size(); i++)
+	{
+		mit = m.find(i);
+		cout << mit->second << endl;
+	}
+	cout << endl;
+
+	/*******************************************************************/
+	/*Очередь с приоритетом на базхе списка*/
+	/*******************************************************************/
+
+	PrioritiesList<int> plist;
+
+	plist.add(111, 20);
+	plist.add(333, 10);
+	plist.add(444, 0);
+	plist.add(222, 15);
+
+	for (PrioritiesList<int>::Iterator i = plist.begin(); !i.empty(); i++)
 	{
 		cout
 			<< "\nData:		" << i->data
 			<< "\nPriority	" << i->priority << endl;
 	}
 
-	list.clear();
+	plist.clear();
+
+	PrioritiesList<Shape*> slist;
+	slist.add(one, 20);
+	slist.add(two, 10);
+	slist.add(three, 0);
+	slist.add(four, 15);
+
+	for (PrioritiesList<Shape*>::Iterator i = slist.begin(); !i.empty(); i++)
+	{
+		cout
+			<< "\nData:		" << i->data
+			<< "\nPriority	" << i->priority << endl;
+	}
+
+	slist.clear();
 
 	system("pause");
 }

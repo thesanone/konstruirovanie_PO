@@ -6,15 +6,15 @@
 class Point
 {
 private:
-	float x, y;
+	int x, y;
 public:
 	Point(){}
-	Point(float x, float y) : x(x), y(y){}
-	float getX() { return x; }
-	float getY() { return y; }
-	void setX(float x) { this->x = x; }
-	void setY(float y) { this->y = y; }
-	void setXY(float x, float y) { this->x = x; this->y = y; }
+	Point(int x, int y) : x(x), y(y){}
+	int getX() { return x; }
+	int getY() { return y; }
+	void setX(int x) { this->x = x; }
+	void setY(int y) { this->y = y; }
+	void setXY(int x, int y) { this->x = x; this->y = y; }
 };
 
 const Point nullPoint = Point(0.0, 0.0);

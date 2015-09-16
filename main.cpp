@@ -10,9 +10,8 @@ void main()
 	/*Shape* q = new TextInRectangle(Point(5,10));
 	cout << q;*/
 
-	/*
 	Point p(5, 10);
-	p.setXY(10.2, 15.5);
+	p.setXY(10, 15);
 
 	Shape* one = new Table(p, 2, 5, 3, 4);
 	cout << one;
@@ -33,7 +32,7 @@ void main()
 	cout << four
 		<< endl << "Text " + four->getID() << " move to point 17, 24";
 	four->moveTo(Point(17, 24));
-	cout << endl << four;*/
+	cout << endl << four;
 	
 	PrioritiesList<int> list;
 
@@ -43,7 +42,7 @@ void main()
 	list.add(444, 0);
 	list.add(222, 15);
 
-	for (PrioritiesList<int>::Iterator i = list.begin(); i != list.end(); i++)
+	for (PrioritiesList<int>::Iterator i = list.begin(); i.empty(); i++)
 	{
 		cout
 			<< "\nData:		" << i->data

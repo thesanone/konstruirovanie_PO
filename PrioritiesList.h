@@ -32,7 +32,7 @@ public:
 
 	bool isNull() { return (head == NULL); }
 
-	int getSize() { return size; }
+	int getSize() const { return size; }
 
 	void add(T el, int priority)
 	{
@@ -108,6 +108,7 @@ public:
 		bool operator!=(const Iterator& other){ return !(*this == other.current); }
 		Node<T>& operator*(){ return *current; }
 		Node<T>* operator->(){ return current; }
+		bool empty(){ return current == NULL; }
 		Iterator& operator=(const Iterator& other)
 		{
 			if (this != &other)
@@ -120,13 +121,6 @@ public:
 		Node<T>* current;
 	};
 	Iterator begin() { return Iterator(head); }
-
-	Iterator end()
-	{
-		/*Node<T>* temp = head;
-		while (temp->next != NULL) temp = temp->next;*/
-		return Iterator(NULL);
-	}
 
 private:
 	Node<T>* head;

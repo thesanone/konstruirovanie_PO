@@ -173,5 +173,8 @@ void main()
 
 	slist.clear();
 
+	PrioritiesList<Shape*>::Iterator it = slist.begin();
+	it++;
+
 	system("pause");
 }

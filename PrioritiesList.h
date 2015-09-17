@@ -103,7 +103,14 @@ public:
 	{
 	public:
 		Iterator(Node<T>* current) :current(current){}
-		Iterator& operator++() { current = current->next; return *this; }
+		Iterator& operator++() {
+			if (current != NULL){
+				current = current->next;
+			}
+			else{ std::cout << "Exception: Cant go to next, current element is null\n"; 
+			}
+			return *this;
+		}
 		bool operator==(const Iterator& other){ return current == other.current; }
 		bool operator!=(const Iterator& other){ return !(*this == other.current); }
 		Node<T>& operator*(){ return *current; }

@@ -25,7 +25,7 @@ void main()
 	cout << "second text: " << one->getText() << "\n";
 
 	Shape* three = new Rectangle(p, 7,3);
-	cout << three << endl << "Rectangle " + three->getID() << " move to point 6, 20";
+	cout << three << endl << "Rectangle " << " move to point 6, 20";
 	three->moveTo(Point(6, 20));
 	cout <<endl<<  three;
 
@@ -33,7 +33,7 @@ void main()
 
 	Shape* four = new Text(p, "Hi, i'm fourth figure");
 	cout << four
-		<< endl << "Text " + four->getID() << " move to point 17, 24";
+		<< endl << "Text " << " move to point 17, 24";
 	four->moveTo(Point(17, 24));
 	cout << endl << four;
 

@@ -23,15 +23,11 @@ class Shape
 {
 	friend std::ostream & operator <<(std::ostream & output, Shape* sh);
 protected:
-	int id;
-	std::string type;
 	Point highLeftPoint;
 public:
 	Shape();
 	~Shape(){}
 	void moveTo(Point p) { highLeftPoint = p; }
-	int getID() const { return id; }
-	std::string getType() const { return type; }
 
 	virtual void setHight(int hight){}
 	virtual int getHight(){ return 0; }

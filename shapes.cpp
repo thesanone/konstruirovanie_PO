@@ -4,49 +4,29 @@
 Shape::Shape()
 {
 	highLeftPoint = nullPoint;
-	/*hight = 0;
-	width = 0;
-	columns = 0;
-	lines = 0;
-	text = "\0";*/
 }
 
 std::ostream & operator <<(std::ostream & output, Shape* sh)
 {
-	output
-		<< "\nType:				" << sh->type << " ; Id: " << sh->id
-		<< "\nCoordinates:		x: " << sh->highLeftPoint.getX() << ", y: " << sh->highLeftPoint.getY();
 	sh->show(output);
+	output
+		<< "\nCoordinates:		x: " << sh->highLeftPoint.getX() << ", y: " << sh->highLeftPoint.getY();
 	return output;
 }
-
-static int shapesCounter = 0;
-static int rectanglesCounter = 0;
-static int tablesCounter = 0;
-static int textCounter = 0;
-static int textInRectangleCounter = 0;
 
 // Прямоугольник
 
 Rectangle::Rectangle()
 {
-	type = "Rectangle";
-	id = rectanglesCounter;
-	rectanglesCounter++;
+
 }
 
 Rectangle::Rectangle(Point highLeftPoint)
 {	
-	type = "Rectangle";
-	id = rectanglesCounter;
-	rectanglesCounter++;
 	this->highLeftPoint = highLeftPoint;
 }
 Rectangle::Rectangle(Point highLeftPoint, int hight, int width)
 {
-	type = "Rectangle";
-	id = rectanglesCounter;
-	rectanglesCounter++;
 	this->highLeftPoint = highLeftPoint;
 	this->hight = hight;
 	this->width = width;
@@ -62,6 +42,7 @@ void Rectangle::setWidth(int width)
 void Rectangle::show(std::ostream & output)
 {
 	output
+		<< "\nThis is rectangle"
 		<< "\nWidth:			" << width
 		<< "\nHight:			" << hight << std::endl;
 }
@@ -70,31 +51,20 @@ void Rectangle::show(std::ostream & output)
 
 Table::Table()
 {
-	type = "Table";
-	id = tablesCounter;
-	tablesCounter++;
+
 }
 Table::Table(Point highLeftPoint)
 {
-	type = "Table";
-	id = tablesCounter;
-	tablesCounter++;
 	this->highLeftPoint = highLeftPoint;
 }
 Table::Table(Point highLeftPoint, int hight, int width)
 {
-	type = "Table";
-	id = tablesCounter;
-	tablesCounter++;
 	this->highLeftPoint = highLeftPoint;
 	this->hight = hight;
 	this->width = width;
 }
 Table::Table(Point highLeftPoint, int hight, int width, short int columns, short int lines)
 {
-	type = "Table";
-	id = tablesCounter;
-	tablesCounter++;
 	this->highLeftPoint = highLeftPoint;
 	this->hight = hight;
 	this->width = width;
@@ -120,6 +90,7 @@ void Table::setLines(short int lines)
 void Table::show(std::ostream & output)
 {
 	output
+		<< "\nThis is table"
 		<< "\nWidth:			" << width
 		<< "\nHight:			" << hight
 		<< "\nColumns:			" << columns
@@ -130,22 +101,14 @@ void Table::show(std::ostream & output)
 
 Text::Text()
 {
-	type = "Text";
-	id = textCounter;
-	textCounter++;
+
 }
 Text::Text(Point highLeftPoint)
 {
-	type = "Text";
-	id = textCounter;
-	textCounter++;
 	this->highLeftPoint = highLeftPoint;
 }
 Text::Text(Point highLeftPoint, std::string text)
 {
-	type = "Text";
-	id = textCounter;
-	textCounter++;
 	this->highLeftPoint = highLeftPoint;
 	this->text = text;
 }
@@ -156,6 +119,7 @@ void Text::setText(std::string text)
 void Text::show(std::ostream & output)
 {
 	output
+		<< "\n This is text"
 		<< "\nText:				" << text << std::endl;
 }
 
@@ -163,38 +127,25 @@ void Text::show(std::ostream & output)
 
 TextInRectangle::TextInRectangle()
 {
-	type = "TextInRectangle";
-	id = textInRectangleCounter;
-	textInRectangleCounter++;
+
 }
 TextInRectangle::TextInRectangle(Point highLeftPoint)
 {
-	type = "TextInRectangle";
-	id = textInRectangleCounter;
-	textInRectangleCounter++;
 	this->highLeftPoint = highLeftPoint;
 }
 TextInRectangle::TextInRectangle(Point highLeftPoint, std::string text)
 {
-	type = "TextInRectangle";
-	id = textInRectangleCounter;
-	textInRectangleCounter++;
+	this->highLeftPoint = highLeftPoint;
 	this->text = text;
 }
 TextInRectangle::TextInRectangle(Point highLeftPoint, int hight, int width)
 {
-	type = "TextInRectangle";
-	id = textInRectangleCounter;
-	textInRectangleCounter++;
 	this->highLeftPoint = highLeftPoint;
 	this->hight = hight;
 	this->width = width;
 }
 TextInRectangle::TextInRectangle(Point highLeftPoint, std::string text, int hight, int width)
 {
-	type = "TextInRectangle";
-	id = textInRectangleCounter;
-	textInRectangleCounter++;
 	this->highLeftPoint = highLeftPoint;
 	this->hight = hight;
 	this->width = width;
@@ -204,6 +155,7 @@ TextInRectangle::TextInRectangle(Point highLeftPoint, std::string text, int high
 void TextInRectangle::show(std::ostream & output)
 {
 	output
+		<< "\nThis is text in rectangle"
 		<< "\nWidth:			" << width
 		<< "\nHight:			" << hight 
 		<< "\nText:				" << text << std::endl;

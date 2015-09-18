@@ -176,5 +176,7 @@ void main()
 	PrioritiesList<Shape*>::Iterator it = slist.begin();
 	it++;
 
+	it += 5;
+
 	system("pause");
 }

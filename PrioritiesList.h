@@ -18,6 +18,18 @@ public:
 	}
 };
 
+
+class ExeptionLinkToNULL
+{
+public:
+	std::string message;
+	int steps_left;
+	ExeptionLinkToNULL(std::string m) :message(m) {}
+	ExeptionLinkToNULL(std::string m, int k) :message(m), steps_left(k) {}
+};
+
+
+
 template <typename T>
 class PrioritiesList
 {
@@ -104,17 +116,54 @@ public:
 	public:
 		Iterator(Node<T>* current) :current(current){}
 		Iterator& operator++() {
-			if (current != NULL){
-				current = current->next;
+			try
+			{
+				if (current != NULL) current = current->next;
+				else throw ExeptionLinkToNULL("Exception: Cant go to next, current element is null\n");
 			}
-			else{ std::cout << "Exception: Cant go to next, current element is null\n"; 
+			catch (ExeptionLinkToNULL e)
+			{
+				cout << e.message;
+			}
+			return *this;
+		}
+		Iterator& operator+=(int k)
+		{
+			try
+			{
+				for (int i = 0; i < k; i++)
+					if (current != NULL) current = current->next;
+					else throw ExeptionLinkToNULL("Exception: Cant go to next, current element is null\n	Steps left: ", k-i);
+			}
+			catch (ExeptionLinkToNULL e)
+			{
+				cout << e.message << e.steps_left << endl;
 			}
 			return *this;
 		}
 		bool operator==(const Iterator& other){ return current == other.current; }
 		bool operator!=(const Iterator& other){ return !(*this == other.current); }
-		Node<T>& operator*(){ return *current; }
-		Node<T>* operator->(){ return current; }
+		Node<T>& operator*(){
+			try
+			{
+				if (current == NULL) throw ExeptionLinkToNULL("Exception: requested access to the NULL point\n")
+				else return *current;
+			}
+			catch (ExeptionLinkToNULL e)
+			{
+				cout << e.message;
+			}
+		}
+		Node<T>* operator->(){
+			try
+			{
+				if (current == NULL) throw ExeptionLinkToNULL("Exception: requested access to the NULL point\n");
+			}
+			catch (ExeptionLinkToNULL e)
+			{
+				cout << e.message;
+			}
+			return current; }
 		bool empty(){ return current == NULL; }
 		Iterator& operator=(const Iterator& other)
 		{

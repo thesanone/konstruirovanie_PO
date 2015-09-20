@@ -1,4 +1,6 @@
 #include "PrioritiesList.h"
+int ExceptionLinkToNULL::timeToStart = 0;
+
 /*
 
 template <typename T>

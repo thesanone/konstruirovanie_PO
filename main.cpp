@@ -8,6 +8,7 @@
 #include <queue>
 #include <stack>
 #include <map>
+#include <ctime>
 
 using namespace std;
 
@@ -16,33 +17,39 @@ void main()
 	Point p(5, 10);
 	p.setXY(10, 15);
 
+	Shape* mas[4];
 	Shape* one = new Table(p, 2, 5, 3, 4);
-	cout << one;
+	mas[0] = one;
+//	cout << one;
 	
 	Shape* two = new TextInRectangle (p, "some text", 5, 15);
-	cout << two;
-	cout << "\n\n new text: " << two->getText() << "\n";
-	cout << "second text: " << one->getText() << "\n";
+	mas[1] = two;
 
 	Shape* three = new Rectangle(p, 7,3);
-	cout << three << endl << "Rectangle " << " move to point 6, 20";
-	three->moveTo(Point(6, 20));
-	cout <<endl<<  three;
+	mas[2] = three;
 
 	p.setXY(-3, -8.5);
 
 	Shape* four = new Text(p, "Hi, i'm fourth figure");
-	cout << four
-		<< endl << "Text " << " move to point 17, 24";
-	four->moveTo(Point(17, 24));
-	cout << endl << four;
+	mas[3] = four;
+
+	for (int i = 0; i < 4; i++)
+	{
+		cout << mas[i];
+	}
+	cout << "\n\n Move to point (6, 20)\n\n";
+	for (int i = 0; i < 4; i++)
+	{
+		mas[i]->moveTo(Point(6, 20));
+		cout << mas[i];
+	}
 
 
 	/*******************************************************************/
 	/*Стандартные контейнеры stl*/
 	/*******************************************************************/
 	// контейнер vector 
-	cout << "Vector: " << endl;
+	cout << "\n\nVector: " << endl;
 	vector<string> v;
 	for (int i = 0; i<5; i++)
 	{

@@ -2,6 +2,7 @@
 #define PRIORITIESLIST_H
 
 #include <iostream>
+#include <locale>
 
 template <typename T>
 class Node
@@ -19,15 +20,20 @@ public:
 };
 
 
-class ExeptionLinkToNULL
+class ExceptionLinkToNULL
 {
 public:
+	static int timeToStart;
 	std::string message;
 	int steps_left;
-	ExeptionLinkToNULL(std::string m) :message(m) {}
-	ExeptionLinkToNULL(std::string m, int k) :message(m), steps_left(k) {}
-};
+	std::string nameFunction;
+	int timecur;
+	ExceptionLinkToNULL(std::string m) :message(m) {}
+	ExceptionLinkToNULL(int k, std::string m) :steps_left(k),message(m){}
+	ExceptionLinkToNULL(std::string name, int curTime, std::string m) : nameFunction(name), timecur(curTime), message(m){}
+	ExceptionLinkToNULL(std::string name, int curTime, int k, std::string m) : nameFunction(name), timecur(curTime), steps_left(k), message(m){}
 
+};
 
 
 template <typename T>
@@ -83,7 +89,7 @@ public:
 
 	void deleteElement(int number)
 	{
-		if (number > size) return NULL;
+		if (number > size) return;
 		Node<T>* temp = head;
 		for (int i = 1; i < number - 1; i++)
 			temp = temp->next;
@@ -119,11 +125,18 @@ public:
 			try
 			{
 				if (current != NULL) current = current->next;
-				else throw ExeptionLinkToNULL("Exception: Cant go to next, current element is null\n");
+				else
+				{
+					int dt = clock();
+					throw ExceptionLinkToNULL("Iterator++ ", dt - ExceptionLinkToNULL::timeToStart , "Cant go to next, current element is null\n");
+				}
 			}
-			catch (ExeptionLinkToNULL e)
+			catch (ExceptionLinkToNULL e)
 			{
-				cout << e.message;
+				cout << "\nExeption: in function " << e.nameFunction;
+				cout << ", in " << e.timecur;
+				cout << "ms per start, steps left " << e.steps_left;
+				cout << ", what happens ? " << e.message;
 			}
 			return *this;
 		}
@@ -133,11 +146,18 @@ public:
 			{
 				for (int i = 0; i < k; i++)
 					if (current != NULL) current = current->next;
-					else throw ExeptionLinkToNULL("Exception: Cant go to next, current element is null\n	Steps left: ", k-i);
+					else
+					{
+						int dt = clock();
+						throw ExceptionLinkToNULL("Iterator+=", dt - ExceptionLinkToNULL::timeToStart , k - i, "Cant go to next, current element is null\n	Steps left: ");
+					}
 			}
-			catch (ExeptionLinkToNULL e)
+			catch (ExceptionLinkToNULL e)
 			{
-				cout << e.message << e.steps_left << endl;
+				cout << "\nExeption: in function " << e.nameFunction;
+				cout << ", in " << e.timecur;
+				cout << "ms per start, steps left " << e.steps_left;
+				cout << ", what happens ? " << e.message;
 			}
 			return *this;
 		}
@@ -146,22 +166,34 @@ public:
 		Node<T>& operator*(){
 			try
 			{
-				if (current == NULL) throw ExeptionLinkToNULL("Exception: requested access to the NULL point\n")
+				if (current == NULL){
+					int dt = clock();
+					throw ExceptionLinkToNULL("", dt - ExceptionLinkToNULL::timeToStart , "Requested access to the NULL point\n");
+				}
 				else return *current;
 			}
-			catch (ExeptionLinkToNULL e)
+			catch (ExceptionLinkToNULL e)
 			{
-				cout << e.message;
+				cout << "\nExeption: in function " << e.nameFunction;
+				cout << ", in " << e.timecur;
+				cout << "ms per start, steps left " << e.steps_left;
+				cout << ", what happens ? " << e.message;
 			}
 		}
 		Node<T>* operator->(){
 			try
 			{
-				if (current == NULL) throw ExeptionLinkToNULL("Exception: requested access to the NULL point\n");
+				if (current == NULL){
+					int dt = clock();
+					throw ExceptionLinkToNULL("", dt - ExceptionLinkToNULL::timeToStart , "Requested access to the NULL point\n");
+				}
 			}
-			catch (ExeptionLinkToNULL e)
+			catch (ExceptionLinkToNULL e)
 			{
-				cout << e.message;
+				cout << "\nExeption: in function " << e.nameFunction;
+				cout << ", in " << e.timecur;
+				cout << "ms per start, steps left " << e.steps_left;
+				cout << ", what happens ? " << e.message;
 			}
 			return current; }
 		bool empty(){ return current == NULL; }

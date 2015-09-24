@@ -179,6 +179,7 @@ void main()
 	}
 
 	slist.clear();
+
 	try
 	{
 		PrioritiesList<Shape*>::Iterator it = slist.begin();

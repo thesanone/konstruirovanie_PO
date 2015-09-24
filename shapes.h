@@ -42,7 +42,7 @@ public:
 	virtual short int getLines(){ return 0; }
 
 	virtual void setText(std::string text){}
-	virtual std::string getText(){ return "null"; }
+	virtual std::string getText(){ return ""; }
 
 	virtual void show(std::ostream & output) = 0;
 };

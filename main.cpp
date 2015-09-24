@@ -179,11 +179,19 @@ void main()
 	}
 
 	slist.clear();
+	try
+	{
+		PrioritiesList<Shape*>::Iterator it = slist.begin();
+		it++;
 
-	PrioritiesList<Shape*>::Iterator it = slist.begin();
-	it++;
-
-	it += 5;
-
+		it += 5;
+	}
+	catch (ExceptionLinkToNULL e)
+	{
+		cout << "\nExeption: in function " << e.nameFunction;
+		cout << ", in " << e.timecur;
+		cout << "ms per start, steps left " << e.steps_left;
+		cout << ", what happens ? " << e.message;
+	}
 	system("pause");
 }

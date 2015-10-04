@@ -29,21 +29,6 @@ public:
 	~Shape(){}
 	void moveTo(Point p) { highLeftPoint = p; }
 
-	virtual void setHight(int hight){}
-	virtual int getHight(){ return 0; }
-
-	virtual void setWidth(int width){}
-	virtual int getWidth(){ return 0; }
-
-	virtual void setColumns(short int columns){}
-	virtual short int getColumns(){ return 0; }
-
-	virtual void setLines(short int lines){}
-	virtual short int getLines(){ return 0; }
-
-	virtual void setText(std::string text){}
-	virtual std::string getText(){ return ""; }
-
 	virtual void show(std::ostream & output) = 0;
 };
 

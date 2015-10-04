@@ -28,6 +28,7 @@ public:
 	Shape();
 	~Shape(){}
 	void moveTo(Point p) { highLeftPoint = p; }
+	Point getHighLeftPoint() { return highLeftPoint; }
 
 	virtual void show(std::ostream & output) = 0;
 };
